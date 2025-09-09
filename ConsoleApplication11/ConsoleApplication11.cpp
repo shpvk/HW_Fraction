@@ -16,8 +16,8 @@ public:
     Fraction addition(Fraction& b)
     {
         Fraction result;
-        result.numerator = this->numerator + b.numerator;
-        result.denominator = this->denominator + b.denominator;
+        result.numerator = this->numerator * b.numerator + b.numerator * this->denominator;
+        result.denominator = this->denominator * b.denominator;
         return result;
     }
 
@@ -39,11 +39,11 @@ public:
 
     Fraction division(Fraction& b)
     {
-        /*if (b.numerator == 0 || b.denominator == 0)
+        if (b.numerator == 0 || b.denominator == 0 || this->numerator == 0 || this->denominator == 0)
         {
             std::cout << "Zero division error" << std::endl;
             return b;
-        }*/
+        }
 
 
         Fraction result;
@@ -63,27 +63,27 @@ int main()
 {
     Fraction f1;
     Fraction f2;
-    f1.Init(1, 2);
-    f2.Init(1, 4);
+    f1.Init(1, 4);
+    f2.Init(7, 4);
 
 
     Fraction result;
 
-    std::cout << "1/2 + 1/4 = ";
+    std::cout << "1/4 + 7/4 = ";
     result = f1.addition(f2);
     result.Print();
 
-    std::cout << "1/2 - 1/4 = ";
+    std::cout << "1/4 - 7/4 = ";
     result = f1.subtraction(f2);
     result.Print();
 
 
-    std::cout << "1/2 * 1/4 = ";
+    std::cout << "1/4 * 7/4 = ";
     result = f1.multiplication(f2);
     result.Print();
 
 
-    std::cout << "1/2 / 1/4 = ";
+    std::cout << "1/4 / 7/4 = ";
     result = f1.division(f2);
     result.Print();
 }
